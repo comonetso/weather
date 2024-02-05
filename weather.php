@@ -1,7 +1,10 @@
 <?
 function getWeather($lat, $lng, $date, $time) {
+	//$date = "20240205";
+	//$time = "0500";
+	
 	$ConvGridGps = new ConvGridGps();
-	$gpsToGridData = $ConvGridGps->gpsToGRID($lat, $lng);
+	$gpsToGridData = $ConvGridGps->gpsToGRID($lat, $lng); //WGS
 	$gridToGpsData  = $ConvGridGps->gridToGPS($gpsToGridData[x], $gpsToGridData[y]);
 	//print_r($gpsToGridData);
 	//print_r($gridToGpsData);
