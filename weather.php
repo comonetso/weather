@@ -6,8 +6,6 @@ function getWeather($lat, $lng, $date, $time) {
 	//print_r($gpsToGridData);
 	//print_r($gridToGpsData);
 
-  //echo "$lat, $lng";return;
-
 	$key = "Your serviceKey";
 	$ch = curl_init();
 	$url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst';
@@ -19,8 +17,6 @@ function getWeather($lat, $lng, $date, $time) {
 	$queryParams .= '&' . urlencode('base_time') . '=' . urlencode($time);
 	$queryParams .= '&' . urlencode('nx') . '=' . urlencode($gpsToGridData[x]);
 	$queryParams .= '&' . urlencode('ny') . '=' . urlencode($gpsToGridData[y]);
-
-	//echo "\n".$url.$queryParams."\n\n";
 
 	curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -43,9 +39,9 @@ function getWeather($lat, $lng, $date, $time) {
 
 	//print_r($data);	
 
-	// [PTY] => 0			//강수 형태	없음/비/눈 등 코드
+	// [PTY] => 0		//강수 형태	없음/비/눈 등 코드
 	// [REH] => 87		//상대 습도	%
-	// [RN1] => 0			//1시간 동안의 강수량	mm
+	// [RN1] => 0		//1시간 동안의 강수량	mm
 	// [T1H] => 1.8		//기온	°C
 	// [UUU] => -3.2	//동서방향의 바람 성분	m/s
 	// [VEC] => 53		//풍향	도
